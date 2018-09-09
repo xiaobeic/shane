@@ -660,6 +660,10 @@ body.fixed-header .scrolling-header .navbar .wrap-inside-nav { /*top: 64px;*/ }
 .news-item .user-avatar { position: relative; margin-bottom: 30px; }
 .news-item .user-avatar .avatar { float: right; margin-top: -40px; width: 70px; height: 70px; margin-right: 15px; border: 5px solid #fff; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%; overflow: hidden; }
 .news-item .user-avatar .avatar img { width: 100%; height: 100%; vertical-align: middle; }
+.news-item .image .goto { position: absolute; font-size: 15px; bottom: 35px; left: 30px; display: block; color: #fff; }
+.news-item .image .goto:before { margin-bottom: 15px; content: ""; width: 12px; height: 12px; display: inline-block; border: 2px solid #ff6400; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%; display: block; }
+.news-item .image .goto a {text-decoration: none; color: white; border: transparent;}
+.news-item .image .goto a:hover {font-size:16px; text-decoration: none;border: transparent;}
 
 /******  FEATURE ITEM ******/
 .feature-item { text-align: center; margin: 0 auto 15px; max-width: 300px; }
