@@ -979,3 +979,82 @@ body.fixed-header .scrolling-header .navbar .wrap-inside-nav { /*top: 64px;*/ }
 .blue-theme .feature-item .title:after, .blue-theme .steps-list .step-item .item-icon:before, .blue-theme .steps-list .step-item.invert .item-icon, .blue-theme .steps-section .results-container .skills li.orange .progress, .blue-theme .team-slider .slick-list .slick-track .slide-item .slide-description .contacts, .blue-theme .buy-section, .blue-theme .plan-item.active .item-footer .btn, .blue-theme h5:after { background: #088cdc; }
 .blue-theme .list-achieve .col-md-3 .achieve-item:after, .blue-theme .latest-works-section .scroll-pane .scroll-content-item .name:before, .blue-theme .plan-item.active, .blue-theme .header .navbar .navbar-nav li.active a, .blue-theme .header .navbar .navbar-nav li a:hover, .blue-theme .design-arrow:after, .blue-theme .news-item .image .read-more:before { border-color: #088cdc; }
 .blue-theme .video-section .btn-play, .blue-theme .plan-item .item-body .list-features li.active:before, .blue-theme .plan-item .item-heading .name, .blue-theme .wrap-section-slider .slide-item .slider-title i, .blue-theme .footer-section .footer-nav li a:hover, .blue-theme .footer-section .footer-nav li.active a, .blue-theme .header .navbar .navbar-nav.wrap-user-control li a { color: #088cdc; }
+
+.skills {
+  position: absolute;
+  left: 54%;
+  top: 54%;
+  color: #000000;
+  transform: scale(.5);
+  display: inline-flex;
+  text-shadow: 9px -2px 15px #000;
+}
+.subject-1{font-size: 35px; margin-left: -400px; margin-top: -50px;}
+.subject-2{    font-size: 24px;
+  margin-left: -195px;
+  font-style: oblique;
+  color: springgreen;
+  margin-top: 53px;}
+.subject-3{    font-size: 14px;
+  margin-left: -46px;
+  color: lime;
+  font-weight: 600;
+  margin-top: -31px;}
+.subject-4{font-size: 20px;
+  margin-left: -244px;
+  font-family: -webkit-pictograph;
+  margin-top: -91px;}
+.subject-5{    font-size: 18px;
+  margin-left: -123px;
+  color: white;
+  margin-top: 130px;}
+.subject-6{font-size: 30px;
+  margin-left: 130px;
+  color: #ff0039db;
+  margin-top: 141px;}
+.subject-7{    font-size: 16px;
+  margin-left: 14px;
+  color: aqua;
+  margin-top: -23px;}
+.subject-8{    font-size: 20px;
+  color: chartreuse;
+  margin-left:-52px;
+  margin-top: 90px;}
+.subject-9{font-size: 18px;font-family: monospace; margin-left: -67px;
+  margin-top: 98px;color: yellow;}
+.subject-10{font-size: 16px; margin-left: -150px; margin-top: 10px;    color: yellow;}
+.subject-11{     font-size: 18px;
+  margin-left: -206px;
+  color: gold;
+  margin-top: -113px;}
+.subject-12{    font-size: 28px;
+  margin-left: -359px;
+  font-family: -webkit-pictograph;
+  margin-top: 172px;}
+.subject-13{font-size: 20px;
+  margin-left: 64px;
+  color: fuchsia;
+  margin-top:68px;}
+.subject-14{font-size: 16px;
+  margin-left: -217px;
+  color: mediumvioletred;
+  margin-top: 143px;}
+.subject-15{font-size: 14px;
+  margin-left: 171px;
+  font-family: serif;
+  color: mediumspringgreen;
+  margin-top: -56px;}
+.subject-16{    font-size: 31px;
+  margin-left: -182px;
+  font-style: oblique;
+  color: ghostwhite;
+  margin-top: -4px;}
+.subject-17{    font-size: 19px;
+  margin-left: 2px;
+  color: greenyellow;
+  margin-top: 91px;}
+
+.skills {
+  animation: bounceIn 2s linear forwards;
+  -webkit-animation: bounceIn 2s linear forwards;
+}
