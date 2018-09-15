@@ -197,7 +197,7 @@ body.is-loading:before {
 	opacity: 0.25;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 html {
 	height: auto;
 }
@@ -380,7 +380,7 @@ hr {
 	text-align: right;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 html {
 	font-size: 12pt;
 }
@@ -654,7 +654,7 @@ input[type="radio"] + label:before {
 	opacity: 1.0;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 form {
 	margin: -1.5rem 0 1.5rem 0;
 	width: 100%;
@@ -1102,7 +1102,7 @@ dl dd {
 	margin-left: 1.5rem;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 ul.grid-icons {
 	-moz-justify-content: -moz-flex-start;
 	-webkit-justify-content: -webkit-flex-start;
@@ -1553,7 +1553,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled,  input[type="reset
 }
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 .gallery {
 	-moz-flex-direction: column;
 	-webkit-flex-direction: column;
@@ -2191,7 +2191,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled,  input[type="reset
 	background-color: #323459;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 .panel {
 	-moz-flex-direction: column;
 	-webkit-flex-direction: column;
@@ -2638,7 +2638,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled,  input[type="reset
 	flex-direction: row-reverse;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 .panel.banner .content {
 	padding: 2.8875rem 1.75rem 1.3875rem 1.75rem;
 	-moz-flex-basis: 60%;
@@ -2657,7 +2657,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled,  input[type="reset
 }
 }
 
-@media screen and (max-width: 736px) and (orientation: portrait) {
+@media screen and (max-width: 100px) and (orientation: portrait) {
 .panel.banner .content {
 	-moz-flex-basis: auto;
 	-webkit-flex-basis: auto;
@@ -2750,7 +2750,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled,  input[type="reset
 	background-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.125) 30%, rgba(0, 0, 0, 0.175) 50%);
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 .panel.spotlight .content {
 	padding: 2.8875rem 1.75rem 1.3875rem 1.75rem;
 	-moz-flex-direction: column !important;
@@ -2814,7 +2814,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled,  input[type="reset
 }
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 #page-wrapper {
 	height: auto;
 	padding: 1rem;
@@ -2913,7 +2913,7 @@ body.is-loading #wrapper {
 	opacity: 0;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 100px) {
 #wrapper {
 	-moz-flex-direction: column;
 	-webkit-flex-direction: column;
