@@ -4,12 +4,12 @@
   <resultMap id="BaseResultMap" type="com.info.shane.model.SelfDescription" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="desc_content" property="descContent" jdbcType="VARCHAR" />
     <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
     <result column="modified_date" property="modifiedDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, content, created_date, modified_date
+    id, user_id, desc_content, created_date, modified_date
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,9 +22,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.info.shane.model.SelfDescription" >
-    insert into self_description (id, user_id, content, 
+    insert into self_description (id, user_id, desc_content, 
       created_date, modified_date)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{descContent,jdbcType=VARCHAR}, 
       #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.info.shane.model.SelfDescription" >
@@ -36,8 +36,8 @@
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="content != null" >
-        content,
+      <if test="descContent != null" >
+        desc_content,
       </if>
       <if test="createdDate != null" >
         created_date,
@@ -53,8 +53,8 @@
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+      <if test="descContent != null" >
+        #{descContent,jdbcType=VARCHAR},
       </if>
       <if test="createdDate != null" >
         #{createdDate,jdbcType=TIMESTAMP},
@@ -70,8 +70,8 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
+      <if test="descContent != null" >
+        desc_content = #{descContent,jdbcType=VARCHAR},
       </if>
       <if test="createdDate != null" >
         created_date = #{createdDate,jdbcType=TIMESTAMP},
@@ -85,7 +85,7 @@
   <update id="updateByPrimaryKey" parameterType="com.info.shane.model.SelfDescription" >
     update self_description
     set user_id = #{userId,jdbcType=INTEGER},
-      content = #{content,jdbcType=VARCHAR},
+      desc_content = #{descContent,jdbcType=VARCHAR},
       created_date = #{createdDate,jdbcType=TIMESTAMP},
       modified_date = #{modifiedDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

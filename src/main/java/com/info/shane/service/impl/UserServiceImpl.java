@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public boolean login(String username, String password) {
+    public void login(String username, String password) {
         User user = userMapper.selectByUsername(username);
         if (user == null) {
             throw new NoUserException("No user found!");
@@ -28,7 +28,5 @@ public class UserServiceImpl implements UserService {
         }
 
         SessionUtil.setCurrentUser(user);
-
-        return true;
     }
 }

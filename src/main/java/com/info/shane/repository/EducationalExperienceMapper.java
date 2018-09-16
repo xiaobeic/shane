@@ -1,7 +1,9 @@
 package com.info.shane.repository;
 
 import com.info.shane.model.EducationalExperience;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface EducationalExperienceMapper {
     int deleteByPrimaryKey(Integer id);
 

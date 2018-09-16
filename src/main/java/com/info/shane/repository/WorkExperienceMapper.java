@@ -1,7 +1,9 @@
 package com.info.shane.repository;
 
 import com.info.shane.model.WorkExperience;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface WorkExperienceMapper {
     int deleteByPrimaryKey(Integer id);
 

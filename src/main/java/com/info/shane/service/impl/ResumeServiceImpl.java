@@ -9,11 +9,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class ResumeServiceImpl implements ResumeService {
 
-    @Autowired
-    private UserMapper userMapper;
-
-    public User getUser(Integer id) {
-        return userMapper.selectByPrimaryKey(id);
-    }
-
 }

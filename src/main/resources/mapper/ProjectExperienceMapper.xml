@@ -7,12 +7,14 @@
     <result column="project_name" property="projectName" jdbcType="VARCHAR" />
     <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
     <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="project_content" property="projectContent" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
     <result column="modified_date" property="modifiedDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, project_name, start_date, end_date, content, created_date, modified_date
+    id, user_id, project_name, start_date, end_date, project_content, url, created_date, 
+    modified_date
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -26,11 +28,13 @@
   </delete>
   <insert id="insert" parameterType="com.info.shane.model.ProjectExperience" >
     insert into project_experience (id, user_id, project_name, 
-      start_date, end_date, content, 
-      created_date, modified_date)
+      start_date, end_date, project_content, 
+      url, created_date, modified_date
+      )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, 
-      #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, 
-      #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP})
+      #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{projectContent,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.info.shane.model.ProjectExperience" >
     insert into project_experience
@@ -50,8 +54,11 @@
       <if test="endDate != null" >
         end_date,
       </if>
-      <if test="content != null" >
-        content,
+      <if test="projectContent != null" >
+        project_content,
+      </if>
+      <if test="url != null" >
+        url,
       </if>
       <if test="createdDate != null" >
         created_date,
@@ -76,8 +83,11 @@
       <if test="endDate != null" >
         #{endDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+      <if test="projectContent != null" >
+        #{projectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
       </if>
       <if test="createdDate != null" >
         #{createdDate,jdbcType=TIMESTAMP},
@@ -102,8 +112,11 @@
       <if test="endDate != null" >
         end_date = #{endDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
+      <if test="projectContent != null" >
+        project_content = #{projectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
       </if>
       <if test="createdDate != null" >
         created_date = #{createdDate,jdbcType=TIMESTAMP},
@@ -120,7 +133,8 @@
       project_name = #{projectName,jdbcType=VARCHAR},
       start_date = #{startDate,jdbcType=TIMESTAMP},
       end_date = #{endDate,jdbcType=TIMESTAMP},
-      content = #{content,jdbcType=VARCHAR},
+      project_content = #{projectContent,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
       created_date = #{createdDate,jdbcType=TIMESTAMP},
       modified_date = #{modifiedDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

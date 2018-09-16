@@ -13,7 +13,9 @@ public class ProjectExperience {
 
     private Date endDate;
 
-    private String content;
+    private String projectContent;
+
+    private String url;
 
     private Date createdDate;
 
@@ -59,12 +61,20 @@ public class ProjectExperience {
         this.endDate = endDate;
     }
 
-    public String getContent() {
-        return content;
+    public String getProjectContent() {
+        return projectContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setProjectContent(String projectContent) {
+        this.projectContent = projectContent;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Date getCreatedDate() {

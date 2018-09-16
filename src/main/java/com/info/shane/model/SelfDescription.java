@@ -7,7 +7,7 @@ public class SelfDescription {
 
     private Integer userId;
 
-    private String content;
+    private String descContent;
 
     private Date createdDate;
 
@@ -29,12 +29,12 @@ public class SelfDescription {
         this.userId = userId;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescContent() {
+        return descContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescContent(String descContent) {
+        this.descContent = descContent;
     }
 
     public Date getCreatedDate() {

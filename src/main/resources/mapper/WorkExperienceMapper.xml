@@ -8,12 +8,12 @@
     <result column="job" property="job" jdbcType="VARCHAR" />
     <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
     <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="work_content" property="workContent" jdbcType="VARCHAR" />
     <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
     <result column="modified_date" property="modifiedDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, company, job, start_date, end_date, content, created_date, modified_date
+    id, user_id, company, job, start_date, end_date, work_content, created_date, modified_date
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,11 +28,11 @@
   <insert id="insert" parameterType="com.info.shane.model.WorkExperience" >
     insert into work_experience (id, user_id, company, 
       job, start_date, end_date, 
-      content, created_date, modified_date
+      work_content, created_date, modified_date
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{company,jdbcType=VARCHAR}, 
       #{job,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
-      #{content,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP}
+      #{workContent,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.info.shane.model.WorkExperience" >
@@ -56,8 +56,8 @@
       <if test="endDate != null" >
         end_date,
       </if>
-      <if test="content != null" >
-        content,
+      <if test="workContent != null" >
+        work_content,
       </if>
       <if test="createdDate != null" >
         created_date,
@@ -85,8 +85,8 @@
       <if test="endDate != null" >
         #{endDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+      <if test="workContent != null" >
+        #{workContent,jdbcType=VARCHAR},
       </if>
       <if test="createdDate != null" >
         #{createdDate,jdbcType=TIMESTAMP},
@@ -114,8 +114,8 @@
       <if test="endDate != null" >
         end_date = #{endDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
+      <if test="workContent != null" >
+        work_content = #{workContent,jdbcType=VARCHAR},
       </if>
       <if test="createdDate != null" >
         created_date = #{createdDate,jdbcType=TIMESTAMP},
@@ -133,7 +133,7 @@
       job = #{job,jdbcType=VARCHAR},
       start_date = #{startDate,jdbcType=TIMESTAMP},
       end_date = #{endDate,jdbcType=TIMESTAMP},
-      content = #{content,jdbcType=VARCHAR},
+      work_content = #{workContent,jdbcType=VARCHAR},
       created_date = #{createdDate,jdbcType=TIMESTAMP},
       modified_date = #{modifiedDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

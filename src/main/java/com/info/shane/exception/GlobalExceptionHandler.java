@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,38 +20,55 @@ public class GlobalExceptionHandler {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(CustomizedException.class)
-    public ResponseEntity handleCustomException(HttpServletRequest request, CustomizedException ex) {
+    public ModelAndView handleCustomException(HttpServletRequest request, CustomizedException ex) {
         ResponseEntity responseEntity = new ResponseEntity();
         responseEntity.setErrorCode(ex.getErrorCode());
         responseEntity.setErrorMsg(ex.getMessage());
-        return responseEntity;
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("message", responseEntity);
+        modelAndView.setViewName("error");
+
+        return modelAndView;
     }
 
 
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity handleMethodArgumentTypeMismatchException(HttpServletRequest request, MethodArgumentTypeMismatchException ex) {
+    public ModelAndView handleMethodArgumentTypeMismatchException(HttpServletRequest request, MethodArgumentTypeMismatchException ex) {
         ResponseEntity responseEntity = new ResponseEntity();
         responseEntity.setErrorCode(ErrorCodes.INVALID_PARAM_TYPE);
         responseEntity.setErrorMsg("Invalid parameter type");
-        return responseEntity;
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("message", responseEntity);
+        modelAndView.setViewName("error");
+        return modelAndView;
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity handleHttpMessageNotReadableException(HttpServletRequest request, HttpMessageNotReadableException ex) {
+    public ModelAndView handleHttpMessageNotReadableException(HttpServletRequest request, HttpMessageNotReadableException ex) {
         ResponseEntity responseEntity = new ResponseEntity();
         responseEntity.setErrorCode(ErrorCodes.INVALID_REQUEST_BODY);
         responseEntity.setErrorMsg("Invalid request body");
-        return responseEntity;
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("message", responseEntity);
+        modelAndView.setViewName("error");
+        return modelAndView;
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity handleUncaughtException(HttpServletRequest request, Exception ex) {
+    public ModelAndView handleUncaughtException(HttpServletRequest request, Exception ex) {
         logger.error(ex.getMessage(), ex);
         ResponseEntity responseEntity = new ResponseEntity();
         responseEntity.setErrorCode(-1);
         responseEntity.setErrorMsg("Uncaught exception");
-        return responseEntity;
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("message", responseEntity);
+        modelAndView.setViewName("error");
+        return modelAndView;
     }
 
 }

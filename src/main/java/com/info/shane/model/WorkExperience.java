@@ -15,7 +15,7 @@ public class WorkExperience {
 
     private Date endDate;
 
-    private String content;
+    private String workContent;
 
     private Date createdDate;
 
@@ -69,12 +69,12 @@ public class WorkExperience {
         this.endDate = endDate;
     }
 
-    public String getContent() {
-        return content;
+    public String getWorkContent() {
+        return workContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setWorkContent(String workContent) {
+        this.workContent = workContent;
     }
 
     public Date getCreatedDate() {

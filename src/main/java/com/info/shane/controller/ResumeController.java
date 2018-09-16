@@ -16,9 +16,5 @@ public class ResumeController {
     @Autowired
     private ResumeService resumeService;
 
-    @RequestMapping("/user")
-    public ResponseEntity getUser(@RequestParam("id") Integer id) {
-        return new ResponseEntity(resumeService.getUser(id));
-    }
 
 }
