@@ -1,0 +1,9 @@
+.mr_moudle_head{margin-bottom:23px;text-align: center;font-weight: 600;padding: 50px 0 10px 0;}
+.clearfixs:before,.clearfixs:after{content:"";display:table;}
+.clearfixs:after{display:block;clear:both;}
+.clearfixs{*zoom:1;}
+.mr_title span{vertical-align:middle;display:inline-block;}
+.mr_title .mr_title_l{width:230px;height:0;border-top:1px solid #ededed;}
+.mr_title .mr_title_c{font-size:18px;padding:6px 24px;text-align:center;background-color:#eee;-moz-border-radius:26px;-webkit-border-radius:26px;border-radius:26px;margin:0 13px;}
+.mr_title .mr_title_r{width:165px;height:0;border-top:1px solid #ededed;}
+.mr_title .base_edit{margin-left: 20px;}

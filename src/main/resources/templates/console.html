@@ -1,272 +1,486 @@
 <!DOCTYPE html>
-<html>
+<html  lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>Shane</title>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        .progress_bg{height:20px; border: 1px solid #ddd; overflow: hidden;}
-    </style>
+    <link th:href="@{/css/console.css}" rel="stylesheet" type="text/css" href="css/console.css" />
 </head>
 <body>
 
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
-        <form class="form-horizontal" role="form">
-            <div><h2 style="text-align: center;font-weight: 600;font-family: cursive;padding: 25px 0 10px 0;">基本信息</h2></div>
-            <div class="form-group">
-                <label for="name" class="col-sm-3 control-label">名字</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="请输入名字">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="head" class="col-sm-3 control-label">头像</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="head" id="head" placeholder="请输入头像地址">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="company" class="col-sm-3 control-label">公司</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="company" id="company" placeholder="请输入公司">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="job" class="col-sm-3 control-label">职位</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="job" id="job" placeholder="请输入职位">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="sex1" class="col-sm-3 control-label">性别</label>
-                <div class="col-sm-7">
-                    <label class="radio-inline">
-                        <input type="radio" name="sex" id="sex1" value="男" checked>男
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="sex" id="sex2"  value="女">女
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="age" class="col-sm-3 control-label">出生日期</label>
-                <div class="col-sm-7">
-                    <input type="date" class="form-control" name="age" id="age" placeholder="请选择日期">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="education" class="col-sm-3 control-label">学历</label>
-                <div class="col-sm-7">
-                    <select class="form-control" name="education" id="education">
-                        <option value="初中">初中</option>
-                        <option value="高中">高中</option>
-                        <option value="大专">大专</option>
-                        <option value="本科">本科</option>
-                        <option value="硕士">硕士</option>
-                        <option value="博士">博士</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="workingLife" class="col-sm-3 control-label">工作年限</label>
-                <div class="col-sm-7">
-                    <select class="form-control" name="workingLife" id="workingLife">
-                        <option value="1年">1年</option>
-                        <option value="2年">2年</option>
-                        <option value="3年">3年</option>
-                        <option value="4年">4年</option>
-                        <option value="5年">5年</option>
-                        <option value="6年">6年</option>
-                        <option value="7年">7年</option>
-                        <option value="8年">8年</option>
-                        <option value="9年">9年</option>
-                        <option value="10年">10年</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="city" class="col-sm-3 control-label">城市</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="city" id="city" placeholder="请输入城市">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="phone" class="col-sm-3 control-label">手机</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="请输入手机号">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">邮箱</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="email" id="email" placeholder="请输入邮箱">
+        <div class="base">
+            <div class="mr_moudle_head clearfixs">
+                <div class="mr_head_l">
+                    <div class="mr_title">
+                        <span class="mr_title_l"></span>
+                        <span class="mr_title_c">基本信息</span>
+                        <span class="mr_title_r" style="width:230px;"></span>
+                    </div>
                 </div>
             </div>
 
+            <div class="base_form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">名字</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="请输入名字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="head" class="col-sm-3 control-label">头像</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="head" id="head" placeholder="请输入头像地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company" class="col-sm-3 control-label">公司</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="company" id="company" placeholder="请输入公司">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job" class="col-sm-3 control-label">职位</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="job" id="job" placeholder="请输入职位">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sex1" class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-7">
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" id="sex1" value="男" checked>男
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" id="sex2"  value="女">女
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="col-sm-3 control-label">出生日期</label>
+                        <div class="col-sm-7">
+                            <input type="date" class="form-control" name="age" id="age" placeholder="请选择日期">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="education" class="col-sm-3 control-label">学历</label>
+                        <div class="col-sm-7">
+                            <select class="form-control" name="education" id="education">
+                                <option value="初中">初中</option>
+                                <option value="高中">高中</option>
+                                <option value="大专">大专</option>
+                                <option value="本科">本科</option>
+                                <option value="硕士">硕士</option>
+                                <option value="博士">博士</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="workingLife" class="col-sm-3 control-label">工作年限</label>
+                        <div class="col-sm-7">
+                            <select class="form-control" name="workingLife" id="workingLife">
+                                <option value="1年">1年</option>
+                                <option value="2年">2年</option>
+                                <option value="3年">3年</option>
+                                <option value="4年">4年</option>
+                                <option value="5年">5年</option>
+                                <option value="6年">6年</option>
+                                <option value="7年">7年</option>
+                                <option value="8年">8年</option>
+                                <option value="9年">9年</option>
+                                <option value="10年">10年</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="col-sm-3 control-label">城市</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="city" id="city" placeholder="请输入城市">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-3 control-label">手机</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">邮箱</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="请输入邮箱">
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
 
-            <div><h2 style="text-align: center;font-weight: 600;font-family: cursive;padding: 25px 0 10px 0;">自我描述</h2></div>
-            <div class="form-group">
-                <label for="descContent" class="col-sm-3 control-label">自我描述</label>
-                <div class="col-sm-7">
-                    <textarea class="form-control" rows="4" name="descContent" id="descContent" style="resize:none" ></textarea>
+        </div>
+
+
+        <div class="desc">
+            <div class="mr_moudle_head clearfixs">
+                <div class="mr_head_l">
+                    <div class="mr_title">
+                        <span class="mr_title_l"></span>
+                        <span class="mr_title_c">自我描述</span>
+                        <span class="mr_title_r" style="width: 230px"></span>
+                    </div>
                 </div>
             </div>
 
+            <div class="desc_form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="descContent" class="col-sm-3 control-label">自我描述</label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" rows="4" name="descContent" id="descContent" style="resize:none" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
 
-            <div><h2 style="text-align: center;font-weight: 600;font-family: cursive;padding: 25px 0 10px 0;">工作经历</h2></div>
-            <div class="form-group">
-                <label for="company" class="col-sm-3 control-label">公司</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="company" id="company" placeholder="请输入公司">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="work_job" class="col-sm-3 control-label">职位</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="job" id="work_job" placeholder="请输入职位">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="startDate" class="col-sm-3 control-label">在职时间</label>
-                <div class="col-sm-3">
-                    <input type="date" class="form-control" name="startDate" id="startDate">
-                </div>
-                <div class="col-sm-3">
-                    <input type="date" class="form-control" name="endDate" id="endDate">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="workContent" class="col-sm-3 control-label">工作描述</label>
-                <div class="col-sm-7">
-                    <textarea class="form-control" rows="4" name="workContent" id="workContent" style="resize:none" ></textarea>
-                </div>
-            </div>
-
-
-
-
-            <div><h2 style="text-align: center;font-weight: 600;font-family: cursive;padding: 25px 0 10px 0;">教育经历</h2></div>
-            <div class="form-group">
-                <label for="organization" class="col-sm-3 control-label">学校</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="organization" id="organization" placeholder="请输入学校">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="major" class="col-sm-3 control-label">专业</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="major" id="major" placeholder="请输入专业">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="startDate" class="col-sm-3 control-label">就读时间</label>
-                <div class="col-sm-3">
-                    <input type="date" class="form-control" name="startDate" id="startDate">
-                </div>
-                <div class="col-sm-3">
-                    <input type="date" class="form-control" name="endDate" id="endDate">
+        <div class="work">
+            <div class="mr_moudle_head clearfixs">
+                <div class="mr_head_l">
+                    <div class="mr_title">
+                        <span class="mr_title_l"></span>
+                        <span class="mr_title_c">工作经历</span>
+                        <span class="mr_title_r"></span>
+                        <a href="#" data-toggle="modal" data-target="#workModal" class="work_add">
+                            <span class="fa fa-edit">添加</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-
-
-            <div><h2 style="text-align: center;font-weight: 600;font-family: cursive;padding: 25px 0 10px 0;">项目经验</h2></div>
-            <div class="form-group">
-                <label for="projectName" class="col-sm-3 control-label">名称</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="projectName" id="projectName" placeholder="请输入项目名称">
-                </div>
+            <div class="work_form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="company" class="col-sm-3 control-label">公司</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="company" id="company" placeholder="请输入公司">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="work_job" class="col-sm-3 control-label">职位</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="job" id="work_job" placeholder="请输入职位">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate" class="col-sm-3 control-label">在职时间</label>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control" name="startDate" id="startDate">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control" name="endDate" id="endDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="workContent" class="col-sm-3 control-label">工作描述</label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" rows="4" name="workContent" id="workContent" style="resize:none" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center">
+                        <button type="" class="btn btn-primary">保存</button>
+                        <button type="" style="margin-left: 50px" class="btn btn-warning">删除</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="url" class="col-sm-3 control-label">链接</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="url" id="url" placeholder="请输入项目链接">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="startDate" class="col-sm-3 control-label">项目时间</label>
-                <div class="col-sm-3">
-                    <input type="date" class="form-control" name="startDate" id="startDate">
-                </div>
-                <div class="col-sm-3">
-                    <input type="date" class="form-control" name="endDate" id="endDate">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="projectContent" class="col-sm-3 control-label">项目描述</label>
-                <div class="col-sm-7">
-                    <textarea class="form-control" rows="4" name="projectContent" id="projectContent" style="resize:none" ></textarea>
-                </div>
-            </div>
 
-
-
-            <div><h2 style="text-align: center;font-weight: 600;font-family: cursive;padding: 25px 0 10px 0;">技能评价</h2></div>
-            <div class="form-group">
-                <label for="skillsName" class="col-sm-3 control-label">技能名称</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="skillsName" id="skillsName" placeholder="请输入技能名称">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="grade" class="col-sm-3 control-label">掌握程度</label>
-                <div class="col-sm-7">
-                    <div class="row" style="margin-top: 5px;">
-                        <div class="col-sm-10">
-                            <div class="progress">
-                                <div class="progress_bg" style="height:20px; border: 1px solid #ddd; overflow: hidden;">
-                                    <div class="progress-bar" role="progressbar" style="width: 60%;"></div>
+            <div class="modal fade" id="workModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="top: 20%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">工作经历</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="company" class="col-sm-3 control-label">公司</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="company" id="company" placeholder="请输入公司">
+                                    </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="work_job" class="col-sm-3 control-label">职位</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="job" id="work_job" placeholder="请输入职位">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="startDate" class="col-sm-3 control-label">在职时间</label>
+                                    <div class="col-sm-3">
+                                        <input type="date" class="form-control" name="startDate" id="startDate">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="date" class="form-control" name="endDate" id="endDate">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="workContent" class="col-sm-3 control-label">工作描述</label>
+                                    <div class="col-sm-7">
+                                        <textarea class="form-control" rows="4" name="workContent" id="workContent" style="resize:none" ></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="" class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="education">
+            <div class="mr_moudle_head clearfixs">
+                <div class="mr_head_l">
+                    <div class="mr_title">
+                        <span class="mr_title_l"></span>
+                        <span class="mr_title_c">教育经历</span>
+                        <span class="mr_title_r" style="width: 230px"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education_form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="organization" class="col-sm-3 control-label">学校</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="organization" id="organization" placeholder="请输入学校">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="major" class="col-sm-3 control-label">专业</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="major" id="major" placeholder="请输入专业">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate" class="col-sm-3 control-label">就读时间</label>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control" name="startDate" id="startDate">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control" name="endDate" id="endDate">
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="project">
+            <div class="mr_moudle_head clearfixs">
+                <div class="mr_head_l">
+                    <div class="mr_title">
+                        <span class="mr_title_l"></span>
+                        <span class="mr_title_c">项目经验</span>
+                        <span class="mr_title_r"></span>
+                        <a href="#" data-toggle="modal" data-target="#projectModal" class="project_add">
+                            <span class="fa fa-edit">添加</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project_form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="projectName" class="col-sm-3 control-label">名称</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="projectName" id="projectName" placeholder="请输入项目名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="url" class="col-sm-3 control-label">链接</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="url" id="url" placeholder="请输入项目链接">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate" class="col-sm-3 control-label">项目时间</label>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control" name="startDate" id="startDate">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control" name="endDate" id="endDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectContent" class="col-sm-3 control-label">项目描述</label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" rows="4" name="projectContent" id="projectContent" style="resize:none" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center">
+                        <button type="" class="btn btn-primary">保存</button>
+                        <button type="" style="margin-left: 50px" class="btn btn-warning">删除</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="top: 20%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">项目经验</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="projectName" class="col-sm-3 control-label">名称</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="projectName" id="projectName" placeholder="请输入项目名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="url" class="col-sm-3 control-label">链接</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="url" id="url" placeholder="请输入项目链接">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="startDate" class="col-sm-3 control-label">项目时间</label>
+                                    <div class="col-sm-3">
+                                        <input type="date" class="form-control" name="startDate" id="startDate">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="date" class="form-control" name="endDate" id="endDate">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="projectContent" class="col-sm-3 control-label">项目描述</label>
+                                    <div class="col-sm-7">
+                                        <textarea class="form-control" rows="4" name="projectContent" id="projectContent" style="resize:none" ></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="" class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="skills">
+            <div class="mr_moudle_head clearfixs">
+                <div class="mr_head_l">
+                    <div class="mr_title">
+                        <span class="mr_title_l"></span>
+                        <span class="mr_title_c">技能评价</span>
+                        <span class="mr_title_r"></span>
+                        <a href="#" data-toggle="modal" data-target="#skillsModal" class="project_add">
+                            <span class="fa fa-edit">添加</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills_form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="skillsName" class="col-sm-3 control-label">技能名称</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="skillsName" id="skillsName" placeholder="请输入技能名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="grade" class="col-sm-3 control-label">掌握程度</label>
+                        <div class="col-sm-7">
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-sm-10">
+                                    <div class="progress">
+                                        <div class="progress_bg" style="height:20px; border: 1px solid #ddd; overflow: hidden;">
+                                            <div class="progress-bar" role="progressbar" style="width: 60%;"></div>
+                                            <input type="text"  class="form-control" value="60" name="grade" id="grade" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 progress_text" style="text-align: center;">掌握</div>
                             </div>
                         </div>
-                        <div class="col-sm-2 progress_text" style="text-align: center;">掌握</div>
                     </div>
-                    <input type="hidden"  class="form-control" value="60" name="grade" id="grade" >
-                </div>
+                    <div class="form-group" style="text-align: center">
+                        <button type="" class="btn btn-primary">保存</button>
+                        <button type="" style="margin-left: 50px" class="btn btn-warning">删除</button>
+                    </div>
+                </form>
             </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">登录</button>
+            <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="top: 20%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">项目经验</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="skillsName" class="col-sm-3 control-label">技能名称</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="skillsName" id="skillsName" placeholder="请输入技能名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="grade" class="col-sm-3 control-label">掌握程度</label>
+                                    <div class="col-sm-7">
+                                        <div class="row" style="margin-top: 5px;">
+                                            <div class="col-sm-10">
+                                                <div class="progress">
+                                                    <div class="progress_bg" style="height:20px; border: 1px solid #ddd; overflow: hidden;">
+                                                        <div class="progress-bar" role="progressbar" style="width: 60%;"></div>
+                                                        <input type="text"  class="form-control grade" value="60" name="grade" id="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2 progress_text" style="text-align: center;">掌握</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="" class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
     <div class="col-lg-3"></div>
 
-    <script type="text/javascript">
-        $(function(){
-            var left = 0,bgleft = 0;
-            var progress_width = $(".progress").width();
-
-            $('.progress_bg').click(function(e) {//鼠标点击
-                bgleft = $('.progress_bg').offset().left;
-                left = e.pageX - bgleft;
-                if (left <= 0) {
-                    left = 0;
-                }else if (left > progress_width) {
-                    left = progress_width;
-                }
-                $('.progress-bar').animate({width:left},progress_width);
-                $('#grade').val(parseInt((left/progress_width)*100));
-
-                if ($('#grade').val() <= 20) {
-                    $('.progress_text').html('了解');
-                } else if ($('#grade').val() <= 40) {
-                    $('.progress_text').html('熟悉');
-                } else if ($('#grade').val() <= 60) {
-                    $('.progress_text').html('掌握');
-                } else if ($('#grade').val() <= 80) {
-                    $('.progress_text').html('精通');
-                } else {
-                    $('.progress_text').html('专家');
-                }
-            });
-        });
-    </script>
+    <script type="text/javascript" th:src="@{/js/console.js}" src="js/console.js" ></script>
 </body>
 </html>
