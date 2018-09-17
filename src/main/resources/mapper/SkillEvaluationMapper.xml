@@ -22,7 +22,7 @@
     delete from skill_evaluation
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.info.shane.model.SkillEvaluation" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.info.shane.model.SkillEvaluation" >
     insert into skill_evaluation (id, user_id, skills_name, 
       grade, created_date, modified_date
       )

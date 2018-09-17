@@ -1,8 +1,6 @@
 package com.info.shane.controller;
 
-import com.info.shane.model.BaseInfo;
-import com.info.shane.model.SelfDescription;
-import com.info.shane.model.WorkExperience;
+import com.info.shane.model.*;
 import com.info.shane.service.ResumeService;
 import com.info.shane.vo.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +37,34 @@ public class ResumeController {
     @RequestMapping("/delete_work_info")
     public ResponseEntity deleteWorkInfo(Integer id) {
         resumeService.deleteWorkInfo(id);
+        return new ResponseEntity();
+    }
+
+    @RequestMapping("/save_education_info")
+    public ResponseEntity saveEducationInfo(EducationalExperience educationalExperience) {
+        resumeService.saveEducationInfo(educationalExperience);
+        return new ResponseEntity();
+    }
+
+    @RequestMapping("/save_project_info")
+    public ResponseEntity<ProjectExperience> saveProjectInfo(ProjectExperience projectExperience) {
+        return new ResponseEntity(resumeService.saveProjectInfo(projectExperience));
+    }
+
+    @RequestMapping("/delete_project_info")
+    public ResponseEntity deleteProjectInfo(Integer id) {
+        resumeService.deleteProjectInfo(id);
+        return new ResponseEntity();
+    }
+
+    @RequestMapping("/save_skill_info")
+    public ResponseEntity<SkillEvaluation> saveSkillInfo(SkillEvaluation skillEvaluation) {
+        return new ResponseEntity(resumeService.saveSkillInfo(skillEvaluation));
+    }
+
+    @RequestMapping("/delete_skill_info")
+    public ResponseEntity deleteSkillInfo(Integer id) {
+        resumeService.deleteSkillInfo(id);
         return new ResponseEntity();
     }
 

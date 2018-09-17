@@ -1,13 +1,8 @@
 package com.info.shane.service.impl;
 
 import com.info.shane.exception.SessionExpiredException;
-import com.info.shane.model.BaseInfo;
-import com.info.shane.model.SelfDescription;
-import com.info.shane.model.User;
-import com.info.shane.model.WorkExperience;
-import com.info.shane.repository.BaseInfoMapper;
-import com.info.shane.repository.SelfDescriptionMapper;
-import com.info.shane.repository.WorkExperienceMapper;
+import com.info.shane.model.*;
+import com.info.shane.repository.*;
 import com.info.shane.service.ResumeService;
 import com.info.shane.utils.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +22,15 @@ public class ResumeServiceImpl implements ResumeService {
     @Autowired
     private WorkExperienceMapper workExperienceMapper;
 
+    @Autowired
+    private EducationalExperienceMapper educationalExperienceMapper;
+
+    @Autowired
+    private ProjectExperienceMapper projectExperienceMapper;
+
+    @Autowired
+    private SkillEvaluationMapper skillEvaluationMapper;
+
     @Override
     public void saveBaseInfo(BaseInfo baseInfo) {
         User user = SessionUtil.getCurrentUser();
@@ -38,7 +42,7 @@ public class ResumeServiceImpl implements ResumeService {
             baseInfoMapper.insert(baseInfo);
         } else {
             baseInfo.setModifiedDate(new Date());
-            baseInfoMapper.updateByPrimaryKey(baseInfo);
+            baseInfoMapper.updateByPrimaryKeySelective(baseInfo);
         }
     }
 
@@ -53,7 +57,7 @@ public class ResumeServiceImpl implements ResumeService {
             selfDescriptionMapper.insert(selfDescription);
         } else {
             selfDescription.setModifiedDate(new Date());
-            selfDescriptionMapper.updateByPrimaryKey(selfDescription);
+            selfDescriptionMapper.updateByPrimaryKeySelective(selfDescription);
         }
     }
 
@@ -68,7 +72,7 @@ public class ResumeServiceImpl implements ResumeService {
             workExperienceMapper.insert(workExperience);
         } else {
             workExperience.setModifiedDate(new Date());
-            workExperienceMapper.updateByPrimaryKey(workExperience);
+            workExperienceMapper.updateByPrimaryKeySelective(workExperience);
         }
 
         return workExperience;
@@ -77,5 +81,64 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public void deleteWorkInfo(Integer id) {
         workExperienceMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void saveEducationInfo(EducationalExperience educationalExperience) {
+        User user = SessionUtil.getCurrentUser();
+        educationalExperience.setUserId(user.getId());
+
+        if (educationalExperience.getId() == null) {
+            educationalExperience.setCreatedDate(new Date());
+            educationalExperience.setModifiedDate(new Date());
+            educationalExperienceMapper.insert(educationalExperience);
+        } else {
+            educationalExperience.setModifiedDate(new Date());
+            educationalExperienceMapper.updateByPrimaryKeySelective(educationalExperience);
+        }
+    }
+
+    @Override
+    public ProjectExperience saveProjectInfo(ProjectExperience projectExperience) {
+        User user = SessionUtil.getCurrentUser();
+        projectExperience.setUserId(user.getId());
+
+        if (projectExperience.getId() == null) {
+            projectExperience.setCreatedDate(new Date());
+            projectExperience.setModifiedDate(new Date());
+            projectExperienceMapper.insert(projectExperience);
+        } else {
+            projectExperience.setModifiedDate(new Date());
+            projectExperienceMapper.updateByPrimaryKeySelective(projectExperience);
+        }
+
+        return projectExperience;
+    }
+
+    @Override
+    public void deleteProjectInfo(Integer id) {
+        projectExperienceMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void deleteSkillInfo(Integer id) {
+        skillEvaluationMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public SkillEvaluation saveSkillInfo(SkillEvaluation skillEvaluation) {
+        User user = SessionUtil.getCurrentUser();
+        skillEvaluation.setUserId(user.getId());
+
+        if (skillEvaluation.getId() == null) {
+            skillEvaluation.setCreatedDate(new Date());
+            skillEvaluation.setModifiedDate(new Date());
+            skillEvaluationMapper.insert(skillEvaluation);
+        } else {
+            skillEvaluation.setModifiedDate(new Date());
+            skillEvaluationMapper.updateByPrimaryKeySelective(skillEvaluation);
+        }
+
+        return skillEvaluation;
     }
 }

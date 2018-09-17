@@ -1,9 +1,6 @@
 package com.info.shane.service;
 
-import com.info.shane.model.BaseInfo;
-import com.info.shane.model.SelfDescription;
-import com.info.shane.model.User;
-import com.info.shane.model.WorkExperience;
+import com.info.shane.model.*;
 
 public interface ResumeService {
 
@@ -14,4 +11,14 @@ public interface ResumeService {
     WorkExperience saveWorkInfo(WorkExperience workExperience);
 
     void deleteWorkInfo(Integer id);
+
+    void saveEducationInfo(EducationalExperience educationalExperience);
+
+    ProjectExperience saveProjectInfo(ProjectExperience projectExperience);
+
+    void deleteProjectInfo(Integer id);
+
+    void deleteSkillInfo(Integer id);
+
+    SkillEvaluation saveSkillInfo(SkillEvaluation skillEvaluation);
 }
