@@ -28,7 +28,8 @@
             </div>
 
             <div class="base_form">
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" id="base_info_form">
+                    <input type="hidden" class="form-control" name="id">
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label">名字</label>
                         <div class="col-sm-7">
@@ -42,9 +43,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="company" class="col-sm-3 control-label">公司</label>
+                        <label for="company0" class="col-sm-3 control-label">公司</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="company" id="company" placeholder="请输入公司">
+                            <input type="text" class="form-control" name="company" id="company0" placeholder="请输入公司">
                         </div>
                     </div>
                     <div class="form-group">
@@ -119,7 +120,7 @@
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
-                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a id="base_btn" class="btn btn-primary">保存</a>
                     </div>
                 </form>
             </div>
@@ -139,7 +140,8 @@
             </div>
 
             <div class="desc_form">
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" id="desc_info_form">
+                    <input type="hidden" class="form-control" name="id">
                     <div class="form-group">
                         <label for="descContent" class="col-sm-3 control-label">自我描述</label>
                         <div class="col-sm-7">
@@ -147,7 +149,7 @@
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
-                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a id="desc_btn" type="submit" class="btn btn-primary">保存</a>
                     </div>
                 </form>
             </div>
@@ -168,51 +170,52 @@
                 </div>
             </div>
 
-            <div class="work_form">
+            <div class="work_form" id="work_form">
                 <form class="form-horizontal" role="form">
+                    <input type="hidden" class="form-control" name="id">
                     <div class="form-group">
                         <label for="company" class="col-sm-3 control-label">公司</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="company" id="company" placeholder="请输入公司">
+                            <input type="text" class="form-control" name="company" placeholder="请输入公司">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="work_job" class="col-sm-3 control-label">职位</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="job" id="work_job" placeholder="请输入职位">
+                            <input type="text" class="form-control" name="job"  placeholder="请输入职位">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="startDate" class="col-sm-3 control-label">在职时间</label>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" name="startDate" id="startDate">
+                            <input type="date" class="form-control" name="startDate" >
                         </div>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" name="endDate" id="endDate">
+                            <input type="date" class="form-control" name="endDate">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="workContent" class="col-sm-3 control-label">工作描述</label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" rows="4" name="workContent" id="workContent" style="resize:none" ></textarea>
+                            <textarea class="form-control" rows="4" name="workContent" style="resize:none" ></textarea>
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
-                        <button type="" class="btn btn-primary">保存</button>
-                        <button type="" style="margin-left: 50px" class="btn btn-warning">删除</button>
+                        <a href="#" class="work_btn btn btn-primary">保存</a>
+                        <a href="#"  style="margin-left: 50px" class="work_del_btn btn btn-warning">删除</a>
                     </div>
                 </form>
             </div>
 
-            <div class="modal fade" id="workModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="workModal" tabindex="-1" role="dialog" aria-labelledby="workLabel" aria-hidden="true">
                 <div class="modal-dialog" style="top: 20%;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">工作经历</h4>
+                            <h4 class="modal-title" id="workLabel">工作经历</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" id="work_add_form">
                                 <div class="form-group">
                                     <label for="company" class="col-sm-3 control-label">公司</label>
                                     <div class="col-sm-7">
@@ -243,8 +246,8 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="" class="btn btn-primary">保存</button>
+                            <a href="#"  class="btn btn-default" data-dismiss="modal">关闭</a>
+                            <a href="#" id="work_add_btn" class="btn btn-primary">保存</a>
                         </div>
                     </div>
                 </div>
@@ -287,7 +290,7 @@
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
-                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a href="#" class="btn btn-primary">保存</a>
                     </div>
                 </form>
             </div>
@@ -338,18 +341,18 @@
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
-                        <button type="" class="btn btn-primary">保存</button>
-                        <button type="" style="margin-left: 50px" class="btn btn-warning">删除</button>
+                        <a href="#" class="btn btn-primary">保存</a>
+                        <a href="#" class="btn btn-default" data-dismiss="modal">删除</a>
                     </div>
                 </form>
             </div>
 
-            <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectLabel" aria-hidden="true">
                 <div class="modal-dialog" style="top: 20%;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">项目经验</h4>
+                            <h4 class="modal-title" id="projectLabel">项目经验</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" role="form">
@@ -383,8 +386,8 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="" class="btn btn-primary">保存</button>
+                            <a href="#" class="btn btn-default" data-dismiss="modal">关闭</a>
+                            <a href="#" class="btn btn-primary">保存</a>
                         </div>
                     </div>
                 </div>
@@ -437,12 +440,12 @@
                 </form>
             </div>
 
-            <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="skillLabel" aria-hidden="true">
                 <div class="modal-dialog" style="top: 20%;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">项目经验</h4>
+                            <h4 class="modal-title" id="skillLabel">技能评价</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" role="form">
@@ -471,8 +474,8 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="" class="btn btn-primary">保存</button>
+                            <a href="#" class="btn btn-default" data-dismiss="modal">关闭</a>
+                            <a href="#" class="btn btn-primary">保存</a>
                         </div>
                     </div>
                 </div>
@@ -480,6 +483,62 @@
         </div>
     </div>
     <div class="col-lg-3"></div>
+
+    <a href="#" id="title_a" data-toggle="modal" data-target="#title_model"></a>
+    <div class="modal fade" id="title_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="top: 20%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <!--<h4 class="modal-title" id="myModalLabel">工作经历</h4>-->
+                </div>
+                <div class="modal-body" style="text-align: center">
+                    <p id="title_content" style="font-size: 18px">操作成功</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="work_template" style="display: none">
+        <form class="form-horizontal" role="form" style="margin-bottom: 40px;">
+            <input type="hidden" class="form-control" name="id">
+            <div class="form-group">
+                <label for="company" class="col-sm-3 control-label">公司</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="company" placeholder="请输入公司">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="work_job" class="col-sm-3 control-label">职位</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="job"  placeholder="请输入职位">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="startDate" class="col-sm-3 control-label">在职时间</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" name="startDate" >
+                </div>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" name="endDate">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="workContent" class="col-sm-3 control-label">工作描述</label>
+                <div class="col-sm-7">
+                    <textarea class="form-control" rows="4" name="workContent" style="resize:none" ></textarea>
+                </div>
+            </div>
+            <div class="form-group" style="text-align: center">
+                <a href="#" class="work_btn btn btn-primary">保存</a>
+                <a href="#"  style="margin-left: 50px" class="work_del_btn btn btn-warning">删除</a>
+            </div>
+        </form>
+    </div>
 
     <script type="text/javascript" th:src="@{/js/console.js}" src="js/console.js" ></script>
 </body>

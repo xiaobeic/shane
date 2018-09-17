@@ -6,4 +6,5 @@ public class ErrorCodes {
     public static final int INVALID_PARAM_TYPE = 10002;
     public static final int INVALID_REQUEST_BODY = 10003;
     public static final int PASSWORD_ERROR = 10004;
+    public static final int SESSION_EXPIRED = 10005;
 }

@@ -20,16 +20,11 @@ public class GlobalExceptionHandler {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(CustomizedException.class)
-    public ModelAndView handleCustomException(HttpServletRequest request, CustomizedException ex) {
+    public ResponseEntity handleCustomException(HttpServletRequest request, CustomizedException ex) {
         ResponseEntity responseEntity = new ResponseEntity();
         responseEntity.setErrorCode(ex.getErrorCode());
         responseEntity.setErrorMsg(ex.getMessage());
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("message", responseEntity);
-        modelAndView.setViewName("error");
-
-        return modelAndView;
+        return responseEntity;
     }
 
 

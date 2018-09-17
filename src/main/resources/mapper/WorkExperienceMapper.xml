@@ -25,7 +25,7 @@
     delete from work_experience
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.info.shane.model.WorkExperience" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.info.shane.model.WorkExperience" >
     insert into work_experience (id, user_id, company, 
       job, start_date, end_date, 
       work_content, created_date, modified_date

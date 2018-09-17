@@ -1883,3 +1883,6 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2018-09-16 21:00:55.885 [http-nio-8899-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
 2018-09-16 21:00:55.885 [http-nio-8899-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
 2018-09-16 21:00:55.921 [http-nio-8899-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 36 ms
+2018-09-16 21:05:27.472 [http-nio-8899-exec-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2018-09-16 21:05:27.689 [http-nio-8899-exec-7] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2018-09-16 21:05:27.720 [http-nio-8899-exec-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
