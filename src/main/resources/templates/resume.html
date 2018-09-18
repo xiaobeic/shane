@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Shane</title>
         <meta charset="UTF-8">
@@ -10,17 +10,17 @@
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300' rel='stylesheet' type='text/css'>
-        <link href="fonts/Stroke-Gap-Icons-Webfont/style.css" rel="stylesheet" type="text/css" />
+        <link href="fonts/Stroke-Gap-Icons-Webfont/style.css" th:href="@{/fonts/Stroke-Gap-Icons-Webfont/style.css}" rel="stylesheet" type="text/css" />
 
         <!-- components -->
-        <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="vendor/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" /> 
-        <link href="vendor/slider-pro/dist/css/slider-pro.min.css" rel="stylesheet" type="text/css" /> 
-        <link href="vendor/slick-carousel/slick/slick.css" rel="stylesheet" type="text/css" /> 
-        <link href="vendor/animate.css/animate.min.css" rel="stylesheet" type="text/css" /> 
+        <link href="vendor/bootstrap/dist/css/bootstrap.min.css" th:href="@{/vendor/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+        <link href="vendor/owl-carousel/owl-carousel/owl.carousel.css" th:href="@{/vendor/owl-carousel/owl-carousel/owl.carousel.css}" rel="stylesheet" type="text/css" />
+        <link href="vendor/slider-pro/dist/css/slider-pro.min.css" th:href="@{/vendor/slider-pro/dist/css/slider-pro.min.css}" rel="stylesheet" type="text/css" />
+        <link href="vendor/slick-carousel/slick/slick.css" th:href="@{/vendor/slick-carousel/slick/slick.css}" rel="stylesheet" type="text/css" />
+        <link href="vendor/animate.css/animate.min.css" th:href="@{/vendor/animate.css/animate.min.css}" rel="stylesheet" type="text/css" />
 
-        <link href="css/main.css" rel="stylesheet" type="text/css" />
-        <link href="css/resume.css" rel="stylesheet" type="text/css" />
+        <link href="css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css" />
+        <link href="css/resume.css" th:href="@{/css/resume.css}" rel="stylesheet" type="text/css" />
 
     </head>
     <body data-scrolling-animations="true">
@@ -43,18 +43,15 @@
                     </a>
                     <div class="navbar-collapse collapse floated" id="navbar-collapse">
                         <ul class="nav navbar-nav navbar-with-inside clearfix navbar-right with-border">
-                            <li><a href="index.html">主页</a></li>
-                            <li><a href="resume.html">简历</a></li>
-                            <li><a href="projects.html">项目</a></li>
+                            <li><a href="../index.html">主页</a></li>
+                            <li><a href="../resume.html">简历</a></li>
+                            <li><a href="../projects.html">项目</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
 
-        <!-- ========================== -->
-        <!-- ABOUT - HEADER -->
-        <!-- ========================== -->
         <section class="top-header about-header with-bottom-effect transparent-effect dark">
             <div class="bottom-effect"></div>
             <div class="header-container">
@@ -66,27 +63,31 @@
                 <div id="mr_mr_head" class="row" style="margin-top: 130px;">
                     <div class="col-md-4  col-sm-4"></div>
                     <div class="col-md-2  col-sm-2">
-                        <img src="https://www.lgstatic.com/i/image2/M01/8A/73/CgoB5luWE5KAAwErAACXhn8koB0796.jpg" width="120" height="120" alt="" style="border-radius: 50%" />
+                        <img th:src="${resume.baseInfo.head}" width="120" height="120" alt="" style="border-radius: 50%" />
                     </div>
                     <div class="col-md-2  col-sm-2 wow fadeInRightBig" data-wow-duration="2s">
                         <div class="mr_p_name  clearfixs">
-                            <span class="mr_name">郭&nbsp;&nbsp;辉</span>
+                            <span class="mr_name" th:text="${resume.baseInfo.name}"></span>
                         </div>
                         <div class="mr_p_info mr_infoed  clearfixs">
                             <div class="info_t">
                                 <span class="shenfen">
                                     <i></i>
-                                    软件工程师 · 群硕软件开发上海有限公司
+                                    <span th:text="${resume.baseInfo.job}" /> · <span th:text="${resume.baseInfo.company}"></span>
                                 </span>
                             </div>
                             <div class="info_t">
-                                <span class="base_info"><i></i>男&nbsp;&nbsp;&nbsp;25岁&nbsp;&nbsp;&nbsp;本科</span>
-                                <span class="job_span">&nbsp;2年工作经验</span>
-                                <span>&nbsp;&nbsp;&nbsp;上海</span>
+                                <span class="base_info"><i></i>
+                                    <span th:text="${resume.baseInfo.sex}" />&nbsp;&nbsp;&nbsp;
+                                    <span th:text="${resume.baseInfo.age}" />&nbsp;&nbsp;&nbsp;
+                                    <span th:text="${resume.baseInfo.education}" />
+                                </span>
+                                <span class="job_span">&nbsp;<span th:text="${resume.baseInfo.workingLife}" /></span>
+                                <span>&nbsp;&nbsp;&nbsp;<span th:text="${resume.baseInfo.city}" /></span>
                             </div>
                             <div class="info_b">
-                                <span class="mobile"><i></i>15824810400</span>&nbsp;&nbsp;
-                                <span class="email"><i></i>s756048962@sina.com</span>
+                                <span class="mobile"><i></i><span th:text="${resume.baseInfo.phone}" /></span>&nbsp;&nbsp;
+                                <span class="email"><i></i><span th:text="${resume.baseInfo.email}" /></span>
                             </div>
                         </div>
                     </div>
@@ -110,13 +111,9 @@
                     <div class="col-md-6  col-sm-6 wow fadeIn" data-wow-duration="2s">
                         <div id="selfDescription">
                             <div class="mr_moudle_content clearfixs">
-                                <ul>
-                                    <li><p>具有较强的适应能力和沟通能力以及成熟的团队协作意识；</p></li>
-                                    <li><p>有良好的项目管理能力，能独立分析和解决问题；</p></li>
-                                    <li><p>具备独立承担模块的需求分析、设计及开发的能力；</p></li>
-                                    <li><p>对工作充满热情，责任心强，抗压能力强，学习能力强；</p></li>
-                                    <li><p>对新一代技术具有强烈的兴趣；</p></li>
-                                </ul>
+                                <div th:each="desc : ${resume.selfDescriptionVo.descContent}">
+                                    <p th:text="${desc}+'；'"></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -135,24 +132,24 @@
                 </div>
             </div>
             <div class="container results-container">
-                <div class="row">
+                <div class="row" th:each="work : ${resume.workExperiences}">
                     <div class="col-md-2  col-sm-2"></div>
                     <div class="col-md-8  col-sm-8 wow fadeIn" data-wow-duration="2s" style="padding-right:0px;">
                         <div id="workExperience">
                             <div class="clearfixs">
                                 <div class="mr_content_l">
                                     <div class="l2" style="padding-top: 0px;">
-                                        <h4 style="margin-bottom: 0px;margin-top: 0px;">群硕软件开发上海有限公司</h4>
-                                        <span style="float: left">软件工程师</span>
+                                        <h4 style="margin-bottom: 0px;margin-top: 0px;" th:text="${work.company}"></h4>
+                                        <span style="float: left" th:text="${work.job}"></span>
                                     </div>
                                 </div>
                                 <div class="mr_content_r">
-                                    <span>2016.06 -- 2018.09</span>
+                                    <span><span th:text="${#dates.format(work.startDate, 'yyyy-MM')}"></span> -- <span th:text="${#dates.format(work.endDate, 'yyyy-MM')}"></span></span>
                                 </div>
                             </div>
 
                             <div class="mr_content_m olpf">
-                                <p>我任职群硕公司研发部门，在职期间，与项目团队紧密合作先后完成多个高性能、高可用项目。其中工作包括根据客户的需求进行概要设计，根据项目要求完成模块详细设计、编程实现和代码质量审核，按照功能要求完成基本测试以及压力测试，并对关键技术细节编写相应的说明书。此外，参与某些项目后期的重构，维护以及调优等工作。</p>
+                                <p th:text="${work.workContent}"></p>
                             </div>
                         </div>
                     </div>
@@ -177,12 +174,12 @@
                         <div id="educationalBackground">
                             <div class="mr_content_l">
                                 <div class="l2">
-                                    <h4>郑州轻工业大学</h4>
-                                    <span>本科 · 软件工程（java技术）</span>
+                                    <h4 th:text="${resume.educationalExperience.school}"></h4>
+                                    <span><span th:text="${resume.educationalExperience.major}"/></span>
                                 </div>
                             </div>
                             <div class="mr_content_r">
-                                <span>2013年 - 2017年</span>
+                                <span><span th:text="${#dates.format(resume.educationalExperience.startDate, 'yyyy')}"></span>年 - <span th:text="${#dates.format(resume.educationalExperience.endDate, 'yyyy')}"></span>年</span>
                             </div>
                         </div>
                     </div>
@@ -192,86 +189,6 @@
         </section>
 
 
-
-        <!--<section class="steps-section with-icon" style="padding: 10px 0 40px 0;">-->
-            <!--<div class="container">-->
-                <!--<div class="section-heading">-->
-                    <!--<div class="section-title">项目经验</div>-->
-                    <!--<div class="section-subtitle">Practice constantly and grow</div>-->
-                    <!--<div class="design-arrow" style="height: 40px"></div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="container results-container">-->
-                <!--<div class="row">-->
-                    <!--<div class="col-md-2  col-sm-2"></div>-->
-                    <!--<div class="col-md-8  col-sm-8">-->
-                        <!--<div id="projectExperience">-->
-                            <!--<div class="mr_jobe_list">-->
-                                <!--<div class="clearfixs">-->
-                                    <!--<div class="mr_content_l">-->
-                                        <!--<div class="l2">-->
-                                            <!--<a class="projectTitle nourl">Ascendas-Singbridge</a>-->
-                                            <!--<p>后台开发</p>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-
-                                    <!--<div class="mr_content_r">-->
-                                        <!--<span>2018.04 &#45;&#45; 2018.09</span>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="mr_content_m olpf">-->
-                                    <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;本项目是星桥腾飞集团委托开发的一套系统，包括移动端和PC端，后台整合OfficeR&amp;D、DoorAccess、Face++和SubMail等三方服务为客户端提供RESTful API，完成联合办公模式。</p>-->
-                                    <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;系统采用微服务架构，使用SpringCloud进行分布式开发，使用Quartz调度框架同步三方系统数据，使用MyBatis完成持久层操作，使用Redis进行数据缓存，使用关系型数据库Postgres进行数据存储，使用阿里云SLS服务进行日志管理，使用阿里云OSS服务进行静态资源文件存储，使用Maven和Git进行项目管理，并通过Jenkins搭建持续集成环境，使用Rancher进行Docker和Kubernetes的全栈化容器部署与管理。</p>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="mr_jobe_list">-->
-                                <!--<div class="clearfixs">-->
-                                    <!--<div class="mr_content_l">-->
-                                        <!--<div class="l2">-->
-                                            <!--<a class="projectTitle nourl">音昱（Octive）</a>-->
-                                            <!--<p>后台开发</p>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-
-                                    <!--<div class="mr_content_r">-->
-                                        <!--<span>2017.07 &#45;&#45; 2018.02</span>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="mr_content_m olpf">-->
-                                    <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;音昱水中天&quot;是万邦音昱（新加坡）管理有限公司将东方智慧与西方科技融合打造出的全新生活空间和全新生活体系。先后产出了自己的医疗系统、酒店系统以及健身系统，随着用户量的增长，本项目由此而生，主要完成三个系统的数据集成以及数据管理功能。</p>-->
-                                    <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;系统采用微服务架构，使用SpringCloud进行分布式开发，使用Quartz调度框架以及RabbitMQ消息队列同步三方系统数据，使用JPA完成持久层的CRUD操作，使用非关系型数据库MongoDB实现数据存储，使用高性能的Redis进行数据缓存和存储，使用Maven和Git进行项目管理，并通过Jenkins和Docker搭建持续集成环境。</p>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="mr_jobe_list">-->
-                                    <!--<div class="clearfixs">-->
-                                        <!--<div class="mr_content_l">-->
-                                            <!--<div class="l2">-->
-                                                <!--<a class="projectTitle"  target="_blank" href="https://www.hsf.net"><span style="top: 7px;"></span>HSF(Hispanic Scholarship Fund)</a>-->
-                                                <!--<p>后台开发</p>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-
-                                        <!--<div class="mr_content_r">-->
-                                            <!--<span>2016.07 &#45;&#45; 2017.07</span>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                    <!--<div class="mr_content_m olpf">-->
-                                        <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;本项目是拉美裔奖学金基金会委托开发的J2EE系统，为拉丁裔家庭提供完成高等教育的知识和奖学金服务。</p>-->
-                                        <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;系统使用Java企业级开发的开源框架Spring以及Struts2，使用声明式编程AOP技术实现事务、日志和安全性等功能，持久层使用了Hibernate封装CRUD操作，底层使用关系型数据库Postgres实现数据存取，使用Lucene技术实现全文搜索，并通过Ant和Git实现项目管理，通过Jenkins搭建持续集成环境。</p>-->
-                                        <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;项目后期，系统用户量增大到30万，在一定时间并发用户达到系统不可承受的数量，为解决此问题，系统采用横向多服务器部署，并通过负载均衡进行流量分摊，底层数据库采用主-从方式进行同步复制。</p>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2  col-sm-2"></div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</section>-->
-
-
-        <!-- ========================== -->
-        <!-- ABOUT - HISTORY -->
-        <!-- ========================== -->
         <section class="history-section">
             <div class="container">
                 <div class="section-heading">
@@ -280,36 +197,45 @@
                 </div>
             </div>
             <div class="wrap-timeline">
-                <div class="container">
-                    <div class="row left-row">
-                        <div class="round-ico little"></div>
-                        <div class="col-md-1 col-sm-1"></div>
-                        <div class="col-md-5 col-sm-5 time-item wow slideInLeft" data-wow-duration="2s" >
-                            <div class="date" style="text-transform: none">Ascendas-Singbridge</div>
-                            <div class="title">2018.04 -- 2018.09</div>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;本项目是星桥腾飞集团委托开发的一套系统，包括移动端和PC端，后台整合OfficeR&amp;D、DoorAccess、Face++和SubMail等三方服务为客户端提供RESTful API，完成联合办公模式。</p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;系统采用微服务架构，使用SpringCloud进行分布式开发，使用Quartz调度框架同步三方系统数据，使用MyBatis完成持久层操作，使用Redis进行数据缓存，使用关系型数据库Postgres进行数据存储，使用阿里云SLS服务进行日志管理，使用阿里云OSS服务进行静态资源文件存储，使用Maven和Git进行项目管理，并通过Jenkins搭建持续集成环境，使用Rancher进行Docker和Kubernetes的全栈化容器部署与管理。</p>
+                <div class="container" th:each="project, status : ${resume.projectExperienceVos}">
+                    <div th:if="${status.index % 2 == 0}">
+                        <div class="row left-row">
+                            <div class="round-ico little"></div>
+                            <div class="col-md-1 col-sm-1"></div>
+                            <div class="col-md-5 col-sm-5 time-item wow slideInLeft" data-wow-duration="2s" >
+                                <div th:if="${project.url == ''}">
+                                    <div class="date" style="text-transform: none" th:text="${project.projectName}"></div>
+                                </div>
+                                <div th:if="${project.url != ''}">
+                                    <a target="_blank" style="text-decoration-color: #ff6400;" th:href="${project.url}">
+                                        <div class="date" style="text-transform: none" th:text="${project.projectName}"></div>
+                                    </a>
+                                </div>
+                                <div class="title"><span th:text="${#dates.format(project.startDate, 'yyyy-MM')}"></span> -- <span th:text="${#dates.format(project.endDate, 'yyyy-MM')}"></span></div>
+                                <div style="text-align: left" th:each="content : ${project.projectContent}">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${content}+'。'"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row right-row">
-                        <div class="round-ico big"></div>
-                        <div class="col-md-6 col-sm-6"></div>
-                        <div class="col-md-5 col-sm-5 time-item wow fadeInRight" data-wow-duration="2s" >
-                            <div class="date" style="text-transform: none">音昱（Octive）</div>
-                            <div class="title">2017.07 -- 2018.02</div>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;音昱水中天&quot;是万邦音昱（新加坡）管理有限公司将东方智慧与西方科技融合打造出的全新生活空间和全新生活体系。先后产出了自己的医疗系统、酒店系统以及健身系统，随着用户量的增长，本项目由此而生，主要完成三个系统的数据集成以及数据管理功能。</p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;系统采用微服务架构，使用SpringCloud进行分布式开发，使用Quartz调度框架以及RabbitMQ消息队列同步三方系统数据，使用JPA完成持久层的CRUD操作，使用非关系型数据库MongoDB实现数据存储，使用高性能的Redis进行数据缓存和存储，使用Maven和Git进行项目管理，并通过Jenkins和Docker搭建持续集成环境。</p>
-                        </div>
-                    </div>
-                    <div class="row left-row">
-                        <div class="round-ico little"></div>
-                        <div class="col-md-1 col-sm-1"></div>
-                        <div class="col-md-5 col-sm-5 time-item wow slideInLeft" data-wow-duration="2s" >
-                            <a target="_blank" style="text-decoration-color: #ff6400;" href="https://www.hsf.net"><div class="date" style="text-transform: none">HSF(Hispanic Scholarship Fund)</div></a>
-                            <div class="title">2016.07 -- 2017.07</div>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;本项目是拉美裔奖学金基金会委托开发的J2EE系统，为拉丁裔家庭提供完成高等教育的知识和奖学金服务。</p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;系统使用Java企业级开发的开源框架Spring以及Struts2，使用声明式编程AOP技术实现事务、日志和安全性等功能，持久层使用了Hibernate封装CRUD操作，底层使用关系型数据库Postgres实现数据存取，使用Lucene技术实现全文搜索，并通过Ant和Git实现项目管理，通过Jenkins搭建持续集成环境。</p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;项目后期，系统用户量增大到30万，在一定时间并发用户达到系统不可承受的数量，为解决此问题，系统采用横向多服务器部署，并通过负载均衡进行流量分摊，底层数据库采用主-从方式进行同步复制。</p>
+                    <div th:if="${status.index  % 2 == 1}">
+                        <div class="row right-row">
+                            <div class="round-ico big"></div>
+                            <div class="col-md-6 col-sm-6"></div>
+                            <div class="col-md-5 col-sm-5 time-item wow fadeInRight" data-wow-duration="2s">
+                                <div th:if="${project.url == ''}">
+                                    <div class="date" style="text-transform: none" th:text="${project.projectName}"></div>
+                                </div>
+                                <div th:if="${project.url != ''}">
+                                    <a target="_blank" style="text-decoration-color: #ff6400;" th:href="${project.url}">
+                                        <div class="date" style="text-transform: none" th:text="${project.projectName}"></div>
+                                    </a>
+                                </div>
+                                <div class="title"><span th:text="${#dates.format(project.startDate, 'yyyy-MM')}"></span> -- <span th:text="${#dates.format(project.endDate, 'yyyy-MM')}"></span></div>
+                                <div style="text-align: left" th:each="content : ${project.projectContent}">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${content}+'。'"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -329,40 +255,18 @@
                 <div id="skillsAssess row">
                     <div class="col-md-2  col-sm-2"></div>
                     <div class="col-md-8  col-sm-8 wow fadeInUp" data-wow-duration="2s">
-                        <div class="mr_skill_con">
-                            <span class="mr_skill_name" title="SSM,SSH,SpringBoot,SpringCloud">SSM,SSH,SpringBoot,SpringCloud</span>
-                            <span class="mr_skill_plan" data-skillLevel = "76">
-                                 <em style="width: 76%"></em>
+                        <div th:each="skill : ${resume.skillEvaluations}">
+                            <div class="mr_skill_con">
+                                <span class="mr_skill_name" th:title="${skill.skillsName}" th:text="${skill.skillsName}"></span>
+                                <span class="mr_skill_plan"  th:attr="data-skillLevel=${skill.grade}">
+                                 <em th:style="'width:' + ${skill.grade} + '%'"></em>
                                 </span>
-                            <span class="mr_skill_level">精通</span>
-                        </div>
-                        <div class="mr_skill_con">
-                            <span class="mr_skill_name" title="MongoDB,Redis,Postgres,MySQL">MongoDB,Redis,Postgres,MySQL</span>
-                            <span class="mr_skill_plan" data-skillLevel = "60">
-                                 <em style="width: 64%"></em>
-                                </span>
-                            <span class="mr_skill_level">掌握</span>
-                        </div>
-                        <div class="mr_skill_con">
-                            <span class="mr_skill_name" title="ActiveMQ,RabbitMQ,ElasticSearch">ActiveMQ,RabbitMQ,ElasticSearch</span>
-                            <span class="mr_skill_plan" data-skillLevel = "58">
-                                 <em style="width: 62%"></em>
-                                </span>
-                            <span class="mr_skill_level">掌握</span>
-                        </div>
-                        <div class="mr_skill_con">
-                            <span class="mr_skill_name" title="Zookeeper,Dubbo,Nginx,Tomcat">Zookeeper,Dubbo,Nginx,Tomcat</span>
-                            <span class="mr_skill_plan" data-skillLevel = "70">
-                                 <em style="width: 70%"></em>
-                                </span>
-                            <span class="mr_skill_level">精通</span>
-                        </div>
-                        <div class="mr_skill_con">
-                            <span class="mr_skill_name" title="Jenkins,Git,Maven">Jenkins,Git,Maven</span>
-                            <span class="mr_skill_plan" data-skillLevel = "58">
-                                 <em style="width: 60%"></em>
-                                </span>
-                            <span class="mr_skill_level">掌握</span>
+                                <span class="mr_skill_level" th:if="${skill.grade <= 20 }">了解</span>
+                                <span class="mr_skill_level" th:if="${skill.grade >20 && skill.grade <= 40}">熟悉</span>
+                                <span class="mr_skill_level" th:if="${skill.grade >40 && skill.grade <= 60}">掌握</span>
+                                <span class="mr_skill_level" th:if="${skill.grade >60 && skill.grade <= 80}">精通</span>
+                                <span class="mr_skill_level" th:if="${skill.grade >80 && skill.grade <= 100}">专家</span>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-2  col-sm-2"></div>
@@ -397,20 +301,20 @@
 
         <!-- Scripts -->
         <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-        <script src="vendor/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-        <script src="vendor/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="vendor/owl-carousel/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
-        <script src="vendor/waypoints/lib/jquery.waypoints.min.js" type="text/javascript"></script>
-        <script src="vendor/slider-pro/dist/js/jquery.sliderPro.min.js" type="text/javascript"></script>
-        <script src="vendor/slick-carousel/slick/slick.min.js" type="text/javascript"></script>
-        <script src="vendor/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
-        <script src="vendor/wow/dist/wow.min.js" type="text/javascript"></script>
-        <script src="js/modernizr.js" type="text/javascript"></script>
+        <script src="vendor/jquery-ui/jquery-ui.min.js" th:src="@{/vendor/jquery-ui/jquery-ui.min.js}" type="text/javascript"></script>
+        <script src="vendor/bootstrap/dist/js/bootstrap.min.js" th:src="@{/vendor/bootstrap/dist/js/bootstrap.min.js}" type="text/javascript"></script>
+        <script src="vendor/owl-carousel/owl-carousel/owl.carousel.min.js" th:src="@{/vendor/owl-carousel/owl-carousel/owl.carousel.min.js}" type="text/javascript"></script>
+        <script src="vendor/waypoints/lib/jquery.waypoints.min.js" th:src="@{/vendor/waypoints/lib/jquery.waypoints.min.js}" type="text/javascript"></script>
+        <script src="vendor/slider-pro/dist/js/jquery.sliderPro.min.js" th:src="@{/vendor/slider-pro/dist/js/jquery.sliderPro.min.js}" type="text/javascript"></script>
+        <script src="vendor/slick-carousel/slick/slick.min.js" th:src="@{/vendor/slick-carousel/slick/slick.min.js}" type="text/javascript"></script>
+        <script src="vendor/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.min.js" th:src="@{/vendor/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.min.js}" type="text/javascript"></script>
+        <script src="vendor/wow/dist/wow.min.js" th:src="@{/vendor/wow/dist/wow.min.js}" type="text/javascript"></script>
+        <script src="js/modernizr.js" th:src="@{/js/modernizr.js}" type="text/javascript"></script>
 
-        <script src="js/contact.js" type="text/javascript"></script>
-        <script src="js/custom.js" type="text/javascript"></script>
+        <script src="js/contact.js" th:src="@{/js/contact.js}" type="text/javascript"></script>
+        <script src="js/custom.js" th:src="@{/js/custom.js}" type="text/javascript"></script>
         <script type="text/javascript" src="https://www.lagou.com/upload/oss.js"></script>
-        <script type="text/javascript" src="js/resume.js"></script>
+        <script type="text/javascript" src="js/resume.js" th:src="@{/js/resume.js}"></script>
 
     </body>
 </html>

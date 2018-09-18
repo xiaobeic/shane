@@ -16,4 +16,6 @@ public interface BaseInfoMapper {
     int updateByPrimaryKeySelective(BaseInfo record);
 
     int updateByPrimaryKey(BaseInfo record);
+
+    BaseInfo selectByUserId(Integer userId);
 }

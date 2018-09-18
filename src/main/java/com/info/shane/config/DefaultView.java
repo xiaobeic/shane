@@ -1,4 +1,4 @@
-package com.info.shane.common;
+package com.info.shane.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -13,6 +13,7 @@ public class DefaultView implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         //registry.addViewController("/").setViewName("redirect:/test");
         registry.addViewController("/").setViewName("index");
+        registry.addViewController("/resume.html").setViewName("redirect:/resume/find_resume");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 

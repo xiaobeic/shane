@@ -1,6 +1,7 @@
 package com.info.shane.service;
 
 import com.info.shane.model.*;
+import com.info.shane.vo.Resume;
 
 public interface ResumeService {
 
@@ -21,4 +22,8 @@ public interface ResumeService {
     void deleteSkillInfo(Integer id);
 
     SkillEvaluation saveSkillInfo(SkillEvaluation skillEvaluation);
+
+    Resume getResume();
+
+    Resume findResume();
 }

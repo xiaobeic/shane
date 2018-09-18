@@ -16,4 +16,6 @@ public interface EducationalExperienceMapper {
     int updateByPrimaryKeySelective(EducationalExperience record);
 
     int updateByPrimaryKey(EducationalExperience record);
+
+    EducationalExperience selectByUserId(Integer userId);
 }

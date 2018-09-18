@@ -1,5 +1,6 @@
 package com.info.shane.repository;
 
+import com.info.shane.model.BaseInfo;
 import com.info.shane.model.SelfDescription;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,4 +17,6 @@ public interface SelfDescriptionMapper {
     int updateByPrimaryKeySelective(SelfDescription record);
 
     int updateByPrimaryKey(SelfDescription record);
+
+    SelfDescription selectByUserId(Integer userId);
 }

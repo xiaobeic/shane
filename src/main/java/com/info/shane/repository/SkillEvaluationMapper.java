@@ -3,6 +3,8 @@ package com.info.shane.repository;
 import com.info.shane.model.SkillEvaluation;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface SkillEvaluationMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +18,6 @@ public interface SkillEvaluationMapper {
     int updateByPrimaryKeySelective(SkillEvaluation record);
 
     int updateByPrimaryKey(SkillEvaluation record);
+
+    List<SkillEvaluation> selectByUserId(Integer userId);
 }

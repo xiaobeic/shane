@@ -25,6 +25,13 @@
     delete from work_experience
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from work_experience
+    where user_Id = #{userId,jdbcType=INTEGER}
+    order by start_date desc
+  </select>
   <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.info.shane.model.WorkExperience" >
     insert into work_experience (id, user_id, company, 
       job, start_date, end_date, 

@@ -29,94 +29,95 @@
 
             <div class="base_form">
                 <form class="form-horizontal" role="form" id="base_info_form">
-                    <input type="hidden" class="form-control" name="id">
+                    <input type="hidden" class="form-control" name="id" th:value="${resume.baseInfo.id}">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">名字</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="name" placeholder="请输入名字">
+                            <input type="text" class="form-control" name="name" th:value="${resume.baseInfo.name}" placeholder="请输入名字">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">头像</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="head" placeholder="请输入头像地址">
+                            <input type="text" class="form-control" name="head" placeholder="请输入头像地址" th:value="${resume.baseInfo.head}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">公司</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="company"  placeholder="请输入公司">
+                            <input type="text" class="form-control" name="company"  placeholder="请输入公司" th:value="${resume.baseInfo.company}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">职位</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="job"  placeholder="请输入职位">
+                            <input type="text" class="form-control" name="job"  placeholder="请输入职位" th:value="${resume.baseInfo.job}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">性别</label>
                         <div class="col-sm-7">
                             <label class="radio-inline">
-                                <input type="radio" name="sex"  value="男" checked>男
+                                <input type="radio" name="sex"  value="男" th:checked="${resume.baseInfo.sex=='男'}">男
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="sex"   value="女">女
+                                <input type="radio" name="sex"   value="女" th:checked="${resume.baseInfo.sex=='女'}">女
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">出生日期</label>
+                        <label class="col-sm-3 control-label">年龄</label>
                         <div class="col-sm-7">
-                            <input type="date" class="form-control" name="age"  placeholder="请选择日期">
+                            <input type="text" class="form-control" name="age"  placeholder="请输入年龄" th:value="${resume.baseInfo.age}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">学历</label>
                         <div class="col-sm-7">
-                            <select class="form-control" name="education" >
-                                <option value="初中">初中</option>
-                                <option value="高中">高中</option>
-                                <option value="大专">大专</option>
-                                <option value="本科">本科</option>
-                                <option value="硕士">硕士</option>
-                                <option value="博士">博士</option>
+                            <select class="form-control" name="education" th:value="${resume.baseInfo.education}">
+                                <option value="初中" th:selected="${resume.baseInfo.education=='初中'}">初中</option>
+                                <option value="高中" th:selected="${resume.baseInfo.education=='高中'}">高中</option>
+                                <option value="大专" th:selected="${resume.baseInfo.education=='大专'}">大专</option>
+                                <option value="本科" th:selected="${resume.baseInfo.education=='本科'}">本科</option>
+                                <option value="硕士" th:selected="${resume.baseInfo.education=='硕士'}">硕士</option>
+                                <option value="博士" th:selected="${resume.baseInfo.education=='博士'}">博士</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">工作年限</label>
                         <div class="col-sm-7">
-                            <select class="form-control" name="workingLife" >
-                                <option value="1年">1年</option>
-                                <option value="2年">2年</option>
-                                <option value="3年">3年</option>
-                                <option value="4年">4年</option>
-                                <option value="5年">5年</option>
-                                <option value="6年">6年</option>
-                                <option value="7年">7年</option>
-                                <option value="8年">8年</option>
-                                <option value="9年">9年</option>
-                                <option value="10年">10年</option>
+                            <select class="form-control" name="workingLife" th:switch="${resume.baseInfo.workingLife}">
+                                <option value="1年" th:selected="${resume.baseInfo.workingLife=='1年'}">1年</option>
+                                <option value="2年" th:selected="${resume.baseInfo.workingLife=='2年'}">2年</option>
+                                <option value="3年" th:selected="${resume.baseInfo.workingLife=='3年'}">3年</option>
+                                <option value="4年" th:selected="${resume.baseInfo.workingLife=='4年'}">4年</option>
+                                <option value="5年" th:selected="${resume.baseInfo.workingLife=='5年'}">5年</option>
+                                <option value="6年"  th:selected="${resume.baseInfo.workingLife=='6年'}">6年</option>
+                                <option value="7年"  th:selected="${resume.baseInfo.workingLife=='7年'}">7年</option>
+                                <option value="8年" th:selected="${resume.baseInfo.workingLife=='8年'}">8年</option>
+                                <option value="9年" th:selected="${resume.baseInfo.workingLife=='9年'}">9年</option>
+                                <option value="10年" th:selected="${resume.baseInfo.workingLife=='10年'}">10年</option>
+
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">城市</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="city"  placeholder="请输入城市">
+                            <input type="text" class="form-control" name="city"  placeholder="请输入城市" th:value="${resume.baseInfo.city}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">手机</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="phone"  placeholder="请输入手机号">
+                            <input type="text" class="form-control" name="phone"  placeholder="请输入手机号" th:value="${resume.baseInfo.phone}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">邮箱</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="email"  placeholder="请输入邮箱">
+                            <input type="text" class="form-control" name="email"  placeholder="请输入邮箱" th:value="${resume.baseInfo.email}">
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
@@ -141,11 +142,11 @@
 
             <div class="desc_form">
                 <form class="form-horizontal" role="form" id="desc_info_form">
-                    <input type="hidden" class="form-control" name="id">
+                    <input type="hidden" class="form-control" name="id" th:value="${resume.selfDescription.id}">
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">自我描述</label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" rows="4" name="descContent"  style="resize:none" ></textarea>
+                            <textarea class="form-control" rows="6" name="descContent" th:text="${resume.selfDescription.descContent}"  style="resize:none" ></textarea>
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
@@ -170,34 +171,34 @@
                 </div>
             </div>
 
-            <div class="work_form" id="work_form">
+            <div class="work_form" id="work_form" th:each="work : ${resume.workExperiences}">
                 <form class="form-horizontal" role="form">
-                    <input type="hidden" class="form-control" name="id">
+                    <input type="hidden" class="form-control" name="id" th:value="${work.id}">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">公司</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="company" placeholder="请输入公司">
+                            <input type="text" class="form-control" name="company" placeholder="请输入公司" th:value="${work.company}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">职位</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="job"  placeholder="请输入职位">
+                            <input type="text" class="form-control" name="job"  placeholder="请输入职位" th:value="${work.job}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">在职时间</label>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" name="startDate" >
+                            <input type="date" class="form-control" name="startDate" th:value="${#dates.format(work.startDate, 'yyyy-MM-dd')}">
                         </div>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" name="endDate">
+                            <input type="date" class="form-control" name="endDate" th:value="${#dates.format(work.endDate, 'yyyy-MM-dd')}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">工作描述</label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" rows="4" name="workContent" style="resize:none" ></textarea>
+                            <textarea class="form-control" rows="6" name="workContent" style="resize:none" th:text="${work.workContent}"></textarea>
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
@@ -240,7 +241,7 @@
                                 <div class="form-group">
                                     <label  class="col-sm-3 control-label">工作描述</label>
                                     <div class="col-sm-7">
-                                        <textarea class="form-control" rows="4" name="workContent"  style="resize:none" ></textarea>
+                                        <textarea class="form-control" rows="6" name="workContent"  style="resize:none" ></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -268,26 +269,26 @@
 
             <div class="education_form">
                 <form class="form-horizontal" role="form" id="education_info_form">
-                    <input type="hidden" class="form-control" name="id">
+                    <input type="hidden" class="form-control" name="id" th:value="${resume.educationalExperience.id}">
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">学校</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="organization"  placeholder="请输入学校">
+                            <input type="text" class="form-control" name="school"  placeholder="请输入学校" th:value="${resume.educationalExperience.school}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">专业</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="major" placeholder="请输入专业">
+                            <input type="text" class="form-control" name="major" placeholder="请输入专业" th:value="${resume.educationalExperience.major}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">就读时间</label>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" name="startDate">
+                            <input type="date" class="form-control" name="startDate"th:value="${#dates.format(resume.educationalExperience.startDate, 'yyyy-MM-dd')}">
                         </div>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" name="endDate">
+                            <input type="date" class="form-control" name="endDate" th:value="${#dates.format(resume.educationalExperience.endDate, 'yyyy-MM-dd')}">
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
@@ -313,32 +314,33 @@
             </div>
 
             <div class="project_form" id="project_form">
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" th:each="project : ${resume.projectExperiences}">
+                    <input type="hidden" class="form-control" name="id" th:value="${project.id}">
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">名称</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="projectName"  placeholder="请输入项目名称">
+                            <input type="text" class="form-control" name="projectName" placeholder="请输入项目名称" th:value="${project.projectName}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">链接</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="url"  placeholder="请输入项目链接">
+                            <input type="text" class="form-control" name="url" placeholder="请输入项目链接" th:value="${project.url}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label  class="col-sm-3 control-label">项目时间</label>
+                        <label class="col-sm-3 control-label">项目时间</label>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" name="startDate" >
+                            <input type="date" class="form-control" name="startDate" th:value="${#dates.format(project.endDate, 'yyyy-MM-dd')}">
                         </div>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" name="endDate" >
+                            <input type="date" class="form-control" name="endDate" th:value="${#dates.format(project.endDate, 'yyyy-MM-dd')}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">项目描述</label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" rows="4" name="projectContent"  style="resize:none" ></textarea>
+                            <textarea class="form-control" rows="8" name="projectContent" style="resize:none" th:text="${project.projectContent}"></textarea>
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
@@ -381,7 +383,7 @@
                                 <div class="form-group">
                                     <label  class="col-sm-3 control-label">项目描述</label>
                                     <div class="col-sm-7">
-                                        <textarea class="form-control" rows="4" name="projectContent"  style="resize:none" ></textarea>
+                                        <textarea class="form-control" rows="8" name="projectContent"  style="resize:none" ></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -410,12 +412,13 @@
                 </div>
             </div>
 
-            <div class="skill_form" id="skill_form">
+            <div class="skill_form" id="skill_form" th:each="skill : ${resume.skillEvaluations}">
                 <form class="form-horizontal" role="form">
+                    <input type="hidden" class="form-control" name="id" th:value="${skill.id}">
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">技能名称</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="skillsName"  placeholder="请输入技能名称">
+                            <input type="text" class="form-control" name="skillsName"  placeholder="请输入技能名称" th:value="${skill.skillsName}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -425,18 +428,24 @@
                                 <div class="col-sm-10">
                                     <div class="progress">
                                         <div class="progress_bg" style="height:20px; border: 1px solid #ddd; overflow: hidden;">
-                                            <div class="progress-bar" role="progressbar" style="width: 60%;"></div>
-                                            <input type="text"  class="form-control" value="60" name="grade"  >
+                                            <div class="progress-bar" role="progressbar"  th:style="'width:' + ${skill.grade} + '%'"></div>
+                                            <input type="text"  class="form-control" value="60" name="grade" th:value="${skill.grade}">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-2 progress_text" style="text-align: center;">掌握</div>
+                                <div class="col-sm-2 progress_text" style="text-align: center;">
+                                    <span th:if="${skill.grade <= 20 }">了解</span>
+                                    <span th:if="${skill.grade >20 && skill.grade <= 40}">熟悉</span>
+                                    <span th:if="${skill.grade >40 && skill.grade <= 60}">掌握</span>
+                                    <span th:if="${skill.grade >60 && skill.grade <= 80}">精通</span>
+                                    <span th:if="${skill.grade >80 && skill.grade <= 100}">专家</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group" style="text-align: center">
-                        <button type="" class="btn btn-primary">保存</button>
-                        <button type="" style="margin-left: 50px" class="btn btn-warning">删除</button>
+                        <a href="#" class="skill_btn btn btn-primary">保存</a>
+                        <a href="#" style="margin-left: 50px" class="skill_del_btn btn btn-warning">删除</a>
                     </div>
                 </form>
             </div>
@@ -531,7 +540,7 @@
             <div class="form-group">
                 <label  class="col-sm-3 control-label">工作描述</label>
                 <div class="col-sm-7">
-                    <textarea class="form-control" rows="4" name="workContent" style="resize:none" ></textarea>
+                    <textarea class="form-control" rows="6" name="workContent" style="resize:none" ></textarea>
                 </div>
             </div>
             <div class="form-group" style="text-align: center">
@@ -568,7 +577,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">项目描述</label>
                 <div class="col-sm-7">
-                    <textarea class="form-control" rows="4" name="projectContent" style="resize:none" ></textarea>
+                    <textarea class="form-control" rows="8" name="projectContent" style="resize:none" ></textarea>
                 </div>
             </div>
             <div class="form-group" style="text-align: center">
@@ -609,7 +618,6 @@
             </div>
         </form>
     </div>
-
 
     <script type="text/javascript" th:src="@{/js/console.js}" src="js/console.js" ></script>
 </body>

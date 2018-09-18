@@ -15,6 +15,6 @@ public class UserController {
     @RequestMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
         userService.login(username, password);
-        return "console";
+        return "redirect:/resume/get_resume";
     }
 }

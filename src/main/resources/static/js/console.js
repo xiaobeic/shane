@@ -1,33 +1,3 @@
-$(function(){
-    $(".progress_bg").each(function() {
-        var left = 0,bgleft = 0;
-        $(this).click(function(e) {
-            bgleft = $(this).offset().left;
-            left = e.pageX - bgleft;
-            if (left <= 0) {
-                left = 0;
-            }else if (left > $(this).width()) {
-                left = $(this).width();
-            }
-            $(this).children('div').animate({width:left},$(this).width());
-            $(this).children('input').val(parseInt((left/$(this).width())*100));
-
-            if ($(this).children('input').val() <= 20) {
-                $(this).parent().parent().next().html('了解');
-            } else if ($(this).children('input').val() <= 40) {
-                $(this).parent().parent().next().html('熟悉');
-            } else if ($(this).children('input').val() <= 60) {
-                $(this).parent().parent().next().html('掌握');
-            } else if ($(this).children('input').val() <= 80) {
-                $(this).parent().parent().next().html('精通');
-            } else {
-                $(this).parent().parent().next().html('专家');
-            }
-        });
-    });
-});
-
-
 $(function() {
     $("#base_btn").click(function() {
         $.ajax({
@@ -44,6 +14,7 @@ $(function() {
                 $("#title_a").click();
             }
         });
+        return false;
     });
 });
 
@@ -64,6 +35,7 @@ $(function() {
                 $("#title_a").click();
             }
         });
+        return false;
     });
 });
 
@@ -84,6 +56,7 @@ $(function() {
                 $("#title_a").click();
             }
         });
+        return false;
     });
 });
 
@@ -103,6 +76,8 @@ $(function() {
                 $("#title_a").click();
             }
         });
+
+        return false;
     };
 
     var deleteWorkEvent = function() {
@@ -122,6 +97,7 @@ $(function() {
                 $("#title_a").click();
             }
         });
+        return false;
     };
 
     $(".work_btn").each(function() {
@@ -166,6 +142,8 @@ $(function() {
                 $("#title_a").click();
             }
         });
+
+        return false;
     });
 });
 
@@ -186,6 +164,8 @@ $(function() {
                 $("#title_a").click();
             }
         });
+
+        return false;
     };
 
     var deleteProjectEvent = function() {
@@ -205,6 +185,8 @@ $(function() {
                 $("#title_a").click();
             }
         });
+
+        return false;
     };
 
     $(".project_btn").each(function() {
@@ -248,11 +230,37 @@ $(function() {
                 $("#title_a").click();
             }
         });
+
+        return false;
     });
 });
 
 
 $(function() {
+    var skillEvent = function(e) {
+        var bgleft = $(this).offset().left;
+        var left = e.pageX - bgleft;
+        if (left <= 0) {
+            left = 0;
+        }else if (left > $(this).width()) {
+            left = $(this).width();
+        }
+        $(this).children('div').animate({width:left},$(this).width());
+        $(this).children('input').val(parseInt((left/$(this).width())*100));
+
+        if ($(this).children('input').val() <= 20) {
+            $(this).parent().parent().next().html('了解');
+        } else if ($(this).children('input').val() <= 40) {
+            $(this).parent().parent().next().html('熟悉');
+        } else if ($(this).children('input').val() <= 60) {
+            $(this).parent().parent().next().html('掌握');
+        } else if ($(this).children('input').val() <= 80) {
+            $(this).parent().parent().next().html('精通');
+        } else {
+            $(this).parent().parent().next().html('专家');
+        }
+    };
+
     var saveSkillEvent = function() {
         $.ajax({
             type:'post',
@@ -268,6 +276,8 @@ $(function() {
                 $("#title_a").click();
             }
         });
+
+        return false;
     };
 
     var deleteSkillEvent = function() {
@@ -287,7 +297,13 @@ $(function() {
                 $("#title_a").click();
             }
         });
+
+        return false;
     };
+
+    $(".progress_bg").each(function() {
+        $(this).bind('click', skillEvent);
+    });
 
     $(".skill_btn").each(function() {
         $(this).bind('click', saveSkillEvent);
@@ -326,6 +342,7 @@ $(function() {
                     }
                     parent.find(".progress-bar").css('width', data.result.grade + '%');
 
+                    parent.find(".progress_bg").bind('click', skillEvent);
                     parent.find(".skill_btn").bind('click', saveSkillEvent);
                     parent.find(".skill_del_btn").bind('click', deleteSkillEvent);
                 } else {
@@ -335,5 +352,7 @@ $(function() {
                 $("#title_a").click();
             }
         });
+
+        return false;
     });
 });

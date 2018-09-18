@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.info.shane.model.EducationalExperience" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="organization" property="organization" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
     <result column="major" property="major" jdbcType="VARCHAR" />
     <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
     <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
@@ -12,7 +12,7 @@
     <result column="modified_date" property="modifiedDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, organization, major, start_date, end_date, created_date, modified_date
+    id, user_id, school, major, start_date, end_date, created_date, modified_date
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,15 +20,21 @@
     from educational_experience
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from educational_experience
+    where user_Id = #{userId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from educational_experience
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.info.shane.model.EducationalExperience" >
-    insert into educational_experience (id, user_id, organization, 
+    insert into educational_experience (id, user_id, school, 
       major, start_date, end_date, 
       created_date, modified_date)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{organization,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, 
       #{major,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
       #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP})
   </insert>
@@ -41,8 +47,8 @@
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="organization != null" >
-        organization,
+      <if test="school != null" >
+        school,
       </if>
       <if test="major != null" >
         major,
@@ -67,8 +73,8 @@
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="organization != null" >
-        #{organization,jdbcType=VARCHAR},
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
       </if>
       <if test="major != null" >
         #{major,jdbcType=VARCHAR},
@@ -93,8 +99,8 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="organization != null" >
-        organization = #{organization,jdbcType=VARCHAR},
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
       </if>
       <if test="major != null" >
         major = #{major,jdbcType=VARCHAR},
@@ -117,7 +123,7 @@
   <update id="updateByPrimaryKey" parameterType="com.info.shane.model.EducationalExperience" >
     update educational_experience
     set user_id = #{userId,jdbcType=INTEGER},
-      organization = #{organization,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
       major = #{major,jdbcType=VARCHAR},
       start_date = #{startDate,jdbcType=TIMESTAMP},
       end_date = #{endDate,jdbcType=TIMESTAMP},

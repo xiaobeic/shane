@@ -5,8 +5,8 @@ import com.info.shane.service.ResumeService;
 import com.info.shane.vo.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/resume")
@@ -68,4 +68,17 @@ public class ResumeController {
         return new ResponseEntity();
     }
 
+    @RequestMapping("/get_resume")
+    public ModelAndView getResume() {
+        ModelAndView modelAndView = new ModelAndView("console");
+        modelAndView.addObject("resume", resumeService.getResume());
+        return modelAndView;
+    }
+
+    @RequestMapping("/find_resume")
+    public ModelAndView findResume() {
+        ModelAndView modelAndView = new ModelAndView("resume");
+        modelAndView.addObject("resume", resumeService.findResume());
+        return modelAndView;
+    }
 }

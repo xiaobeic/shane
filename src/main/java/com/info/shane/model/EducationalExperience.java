@@ -7,7 +7,7 @@ public class EducationalExperience {
 
     private Integer userId;
 
-    private String organization;
+    private String school;
 
     private String major;
 
@@ -35,12 +35,12 @@ public class EducationalExperience {
         this.userId = userId;
     }
 
-    public String getOrganization() {
-        return organization;
+    public String getSchool() {
+        return school;
     }
 
-    public void setOrganization(String organization) {
-        this.organization = organization;
+    public void setSchool(String school) {
+        this.school = school;
     }
 
     public String getMajor() {
